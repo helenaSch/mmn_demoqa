@@ -11,3 +11,5 @@ class BasePage:
         time.sleep(3)
         return self.driver.find_element(By.CSS_SELECTOR, locator)
 
+    def get_url(self):
+        return self.driver.current_url
