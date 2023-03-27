@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import time
 from selenium.common.exceptions import NoSuchElementException
 
 class WebElement:
@@ -11,8 +10,20 @@ class WebElement:
         self.find_element().click()
 
     def find_element(self):
-        time.sleep(3)
         return self.driver.find_element(By.CSS_SELECTOR, self.locator)
+
+    def find_elements(self):
+        return self.driver.find_elements(By.CSS_SELECTOR, self.locator)
+
+    def check_count_elements(self, count: int):
+        if len(self.find_element()) == count:
+            return True
+        return False
+
+
+    def send_keys(self, text: str):
+        self.find_element().send_keys(text)
+
 
     def exist(self):
         try:

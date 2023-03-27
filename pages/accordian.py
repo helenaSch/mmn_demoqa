@@ -4,6 +4,10 @@ class AccordianPage(BasePage):
     def __init__(self, driver):
         self.base_url = 'https://demoqa.com/accordian'
         super().__init__(driver, self.base_url)
+        self.pageData = {
+            'title': 'Accordian'
+
+        }
         self.accordian_element = WebElement(driver, '#section1Content')
         self.accordian_header = WebElement(driver, '#section1Heading')
         self.accordian_1_element = WebElement(driver, '#section2Content > p:nth-child(1)')
