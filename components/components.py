@@ -22,8 +22,7 @@ class WebElement:
         return True
 
     def get_text(self):
-        try:
-            self.driver.find_element().text
-        except NoSuchElementException:
-            return False
-        return True
+        return str(self.find_element().text)
+
+    def visible(self):
+        return self.find_element().is_displayed()

@@ -7,7 +7,8 @@ class DemoQA(BasePage):
         super().__init__(driver, self.base_url)
         self.icon = WebElement(driver, '#app > header > a')
         self.btn_elements = WebElement(driver, '#app > div > div > div.home-body > div > div:nth-child(1)')
-        self.basement_text = WebElement(driver, '© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.')
+        self.basement_text = WebElement(driver, '#app > footer:nth-child(3) > span:nth-child(1)')
+
 
 
     #def exist_icon(self):
