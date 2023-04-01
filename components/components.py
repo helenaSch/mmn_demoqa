@@ -64,6 +64,11 @@ class WebElement:
             return value
         return True
 
+    #def isButtonDisabled(self):
+        #return self.find_element().is_disabled()
+        #element = self.driver.find_element()
+        #return element.get_property('disabled')
+
     def get_by_type(self):
         if self.locator_type == "id":
             return By.ID
