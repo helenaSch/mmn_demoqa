@@ -43,8 +43,8 @@ def test_two(browser):
     time.sleep(3)
     wt_page.btn_rows_menu.send_keys(text='5 rows')
     wt_page.btn_rows_menu.send_keys(Keys.ENTER)
-    assert wt_page.btn_next.get_text() == 'disabled'
-    assert wt_page.btn_previous.get_text() == 'disabled'
+    assert wt_page.btn_next.get_dom_attribute('disabled')
+    assert wt_page.btn_previous.get_dom_attribute('disabled')
     wt_page.btn_add.click()
     time.sleep(2)
     wt_page.full_name.send_keys(text='boo')
@@ -76,6 +76,7 @@ def test_two(browser):
     wt_page.btn_submit.click_force()
     time.sleep(4)
     assert wt_page.pages.get_text() == '2'
+    assert wt_page.btn_next.get_dom_attribute('class') == '-btn'
     wt_page.btn_next.click_force()
     time.sleep(2)
     wt_page.btn_previous.click_force()
