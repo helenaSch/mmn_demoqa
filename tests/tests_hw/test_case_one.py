@@ -1,5 +1,7 @@
 import time
 import allure
+import pytest
+
 from pages.webtables import WebTables
 from selenium.webdriver.common.keys import Keys
 @allure.feature('check attr')
@@ -32,8 +34,7 @@ def test_one(browser):
 
 
 @allure.feature('check attr')
-@allure.story('Проверка отсутствия атрибута')
-@allure.severity(allure.severity_level.NORMAL)
+@pytest.mark.xfail(condition=True, reason='Причина, о которой тестовая функция помечена как xfail')
 def test_two(browser):
     wt_page = WebTables(browser)
 
@@ -42,8 +43,8 @@ def test_two(browser):
     time.sleep(3)
     wt_page.btn_rows_menu.send_keys(text='5 rows')
     wt_page.btn_rows_menu.send_keys(Keys.ENTER)
-    #assert wt_page.btn_next.isButtonDisabled() == 'disabled'
-    #assert wt_page.btn_previous.get_dom_attribute() == 'disabled'
+    assert wt_page.btn_next.get_text() == 'disabled'
+    assert wt_page.btn_previous.get_text() == 'disabled'
     wt_page.btn_add.click()
     time.sleep(2)
     wt_page.full_name.send_keys(text='boo')
@@ -74,8 +75,7 @@ def test_two(browser):
     wt_page.department.send_keys(text='Nine black tails')
     wt_page.btn_submit.click_force()
     time.sleep(4)
-    #page 1 of 2
-    #next button is enable
+    assert wt_page.pages.get_text() == '2'
     wt_page.btn_next.click_force()
     time.sleep(2)
     wt_page.btn_previous.click_force()

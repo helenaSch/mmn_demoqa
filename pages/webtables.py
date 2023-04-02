@@ -24,3 +24,4 @@ class WebTables(BasePage):
         self.btn_rows_menu = WebElement(driver, '.select-wrap select')
         self.btn_next = WebElement(driver, '.-next > button:nth-child(1)')
         self.btn_previous = WebElement(driver, '.-previous > button:nth-child(1)')
+        self.pages = WebElement(driver, 'span.-pageInfo >span')
