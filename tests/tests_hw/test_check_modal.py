@@ -1,5 +1,7 @@
 import time
 import allure
+import httplib
+import re
 
 from pages.modal_dialogs import ModalDialogs
 
@@ -15,3 +17,6 @@ def test_modals(browser):
     modals_page.large_modal.click()
     time.sleep(2)
     modals_page.btn_close_l.click()
+
+
+    #browser.is_page_available('https://demoqa.com/modal-dialogs')
