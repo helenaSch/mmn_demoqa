@@ -83,14 +83,16 @@ class WebElement:
             print("locator type " + self.locator_type + " not correct")
         return False
 
-    def check_css(self, style, value=''):
-        try:
-            self.driver.execute_script(f"arguments[0].style.{style} = '{value}';", self.find_element())
-        except Exception as ex:
-            logging.log(1, ex)
-            return False
-        return True
+    #def check_css(self, style, value=''):
+        #try:
+            #self.driver.execute_script(f"arguments[0].style.{style} = '{value}';", self.find_element())
+        #except Exception as ex:
+            #logging.log(1, ex)
+            #return False
+        #return True
 
+    def check_css(self, style, value=''):
+        return self.find_element().value_of_css_property(style) == value
 
 
 

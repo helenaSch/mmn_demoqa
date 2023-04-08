@@ -8,16 +8,24 @@ def test_drag_and_drop(browser):
 
     page.visit()
 
+    # action_chains.drag_and_drop(
+    #     page.grag.find_element(),
+    #     page.drop.find_element()
+    # ).perform()
+    assert page.grag.check_css('backgroundColor', 'rgba(0, 0, 0, 0)')
     action_chains.drag_and_drop(
         page.grag.find_element(),
         page.drop.find_element()
     ).perform()
-    assert page.grag.check_css('backgroundColor', 'steelblue')
-    action_chains.drag_and_drop(
+    time.sleep(2)
 
-        page.drop.find_element(),
-        page.grag.find_element()
-    ).perform()
-    #action_chains.drag_and_drop_by_offset(page.grag, 800, 300).perform()
-    #assert page.drop.check_css('backgroundColor', 'steelblue')
+    assert page.drop.check_css('backgroundColor', 'rgba(70, 130, 180, 1)')
     time.sleep(1)
+
+    action_chains.drag_and_drop_by_offset(
+        page.grag.find_element(),
+        -200, 0
+    ).perform()
+    time.sleep(1)
+    assert page.drop.check_css('backgroundColor', 'rgba(70, 130, 180, 1)')
+
